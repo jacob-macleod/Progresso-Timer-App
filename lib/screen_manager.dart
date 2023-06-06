@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:progresso/screens/time_selector.dart';
 
 class ScreenManager extends StatefulWidget {
   const ScreenManager({super.key});
@@ -10,8 +12,16 @@ class ScreenManager extends StatefulWidget {
 }
 
 class _ScreenManagerState extends State<ScreenManager> {
+  String currentScreen = "timeSelector";
+  Widget currentScreenWidget = const TimeSelector();
+
   @override
   Widget build(context) {
-    return Text("Hello World");
+    return const MaterialApp(
+        home: Scaffold(
+      body: Center(
+        child: TimeSelector(),
+      ),
+    ));
   }
 }
