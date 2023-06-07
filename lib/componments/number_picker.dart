@@ -21,10 +21,17 @@ class NumberPickerWidget extends StatefulWidget {
 }
 
 class _NumberPickerWidgetState extends State<NumberPickerWidget> {
-  int _currentValue1 = 3;
-  int _currentValue2 = 3;
-  int _currentValue3 = 3;
+  int _hour = 3;
+  int _minute = 3;
+  int _second = 3;
   final TextStyle _timePickerStyle = const TextStyle(color: Colors.white);
+  final TextStyle _selectedTimePickerStyle = const TextStyle(
+    color: Color.fromRGBO(237, 231, 222, 1),
+    fontWeight: FontWeight.w800,
+    fontSize: 64,
+  );
+  final double _height = 60;
+  final double _width = 100;
 
   @override
   Widget build(context) {
@@ -32,37 +39,46 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
       children: <Widget>[
         const SizedBox(height: 150),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             NumberPicker(
-              value: _currentValue1,
+              value: _hour,
               minValue: 0,
-              maxValue: 100,
+              maxValue: 23,
               haptics: true,
               textStyle: _timePickerStyle,
-              onChanged: (value) => setState(() => _currentValue1 = value),
+              selectedTextStyle: _selectedTimePickerStyle,
+              itemHeight: _height,
+              itemWidth: _width,
+              onChanged: (value) => setState(() => _hour = value),
             ),
             NumberPicker(
-              value: _currentValue2,
+              value: _minute,
               minValue: 0,
-              maxValue: 100,
+              maxValue: 59,
               haptics: true,
               textStyle: _timePickerStyle,
-              onChanged: (value) => setState(() => _currentValue2 = value),
+              selectedTextStyle: _selectedTimePickerStyle,
+              itemHeight: _height,
+              itemWidth: _width,
+              onChanged: (value) => setState(() => _minute = value),
             ),
             NumberPicker(
-              value: _currentValue3,
+              value: _second,
               minValue: 0,
-              maxValue: 100,
+              maxValue: 59,
               haptics: true,
               textStyle: _timePickerStyle,
-              onChanged: (value) => setState(() => _currentValue3 = value),
+              selectedTextStyle: _selectedTimePickerStyle,
+              itemHeight: _height,
+              itemWidth: _width,
+              onChanged: (value) => setState(() => _second = value),
             ),
           ],
         ),
-        Text('Current value: $_currentValue1'),
-        Text('Current value: $_currentValue2'),
-        Text('Current value: $_currentValue3'),
+        Text('Current value: $_hour'),
+        Text('Current value: $_minute'),
+        Text('Current value: $_second'),
       ],
     );
   }
