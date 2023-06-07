@@ -7,6 +7,6 @@ class TimeSelector extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return const NumberPickerWidget();
+    return const Background(NumberPickerWidget());
   }
 }

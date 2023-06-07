@@ -21,19 +21,48 @@ class NumberPickerWidget extends StatefulWidget {
 }
 
 class _NumberPickerWidgetState extends State<NumberPickerWidget> {
-  int _currentValue = 3;
+  int _currentValue1 = 3;
+  int _currentValue2 = 3;
+  int _currentValue3 = 3;
+  final TextStyle _timePickerStyle = const TextStyle(color: Colors.white);
 
   @override
   Widget build(context) {
     return Column(
       children: <Widget>[
-        NumberPicker(
-          value: _currentValue,
-          minValue: 0,
-          maxValue: 100,
-          onChanged: (value) => setState(() => _currentValue = value),
+        const SizedBox(height: 150),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            NumberPicker(
+              value: _currentValue1,
+              minValue: 0,
+              maxValue: 100,
+              haptics: true,
+              textStyle: _timePickerStyle,
+              onChanged: (value) => setState(() => _currentValue1 = value),
+            ),
+            NumberPicker(
+              value: _currentValue2,
+              minValue: 0,
+              maxValue: 100,
+              haptics: true,
+              textStyle: _timePickerStyle,
+              onChanged: (value) => setState(() => _currentValue2 = value),
+            ),
+            NumberPicker(
+              value: _currentValue3,
+              minValue: 0,
+              maxValue: 100,
+              haptics: true,
+              textStyle: _timePickerStyle,
+              onChanged: (value) => setState(() => _currentValue3 = value),
+            ),
+          ],
         ),
-        Text('Current value: $_currentValue'),
+        Text('Current value: $_currentValue1'),
+        Text('Current value: $_currentValue2'),
+        Text('Current value: $_currentValue3'),
       ],
     );
   }
