@@ -16,9 +16,7 @@ class Background extends StatelessWidget {
             Color.fromRGBO(46, 45, 51, 1),
             Color.fromRGBO(38, 37, 51, 1)
           ])),
-      child: Center(
-        child: childWidget,
-      ),
+      child: childWidget,
     );
   }
 }

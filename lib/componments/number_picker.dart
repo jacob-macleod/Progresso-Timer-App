@@ -21,17 +21,20 @@ class NumberPickerWidget extends StatefulWidget {
 }
 
 class _NumberPickerWidgetState extends State<NumberPickerWidget> {
-  int _hour = 3;
-  int _minute = 3;
-  int _second = 3;
-  final TextStyle _timePickerStyle = const TextStyle(color: Colors.white);
+  int _hour = 7;
+  int _minute = 30;
+  int _second = 15;
+  final TextStyle _timePickerStyle = const TextStyle(
+    color: Color.fromRGBO(99, 99, 99, 1),
+    fontSize: 40,
+  );
   final TextStyle _selectedTimePickerStyle = const TextStyle(
     color: Color.fromRGBO(237, 231, 222, 1),
     fontWeight: FontWeight.w800,
     fontSize: 64,
   );
   final double _height = 60;
-  final double _width = 100;
+  final double _width = 90;
 
   @override
   Widget build(context) {
