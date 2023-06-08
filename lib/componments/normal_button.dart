@@ -7,8 +7,19 @@ class NormalButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return OutlinedButton(
+    return ElevatedButton(
       onPressed: () => onPressed("hi"),
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 40,
+        ),
+        backgroundColor: const Color.fromRGBO(85, 95, 116, 1),
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+      ),
       child: Text(
         text,
         style: const TextStyle(
