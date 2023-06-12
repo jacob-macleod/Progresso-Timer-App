@@ -4,7 +4,8 @@ import 'package:progresso/componments/number_picker.dart';
 import 'package:progresso/componments/normal_button.dart';
 
 class TimeSelector extends StatelessWidget {
-  const TimeSelector({super.key});
+  const TimeSelector(this.switchScreen, {super.key});
+  final Function(String screen) switchScreen;
 
   void onClick(String text) {
     // Print the input to the console
@@ -18,7 +19,7 @@ class TimeSelector extends StatelessWidget {
         child: Column(
           children: [
             const NumberPickerWidget(),
-            NormalButton("Hello", onClick),
+            NormalButton("Start Timer", switchScreen),
           ],
         ),
       ),

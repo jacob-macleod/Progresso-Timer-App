@@ -8,7 +8,7 @@ class NormalButton extends StatelessWidget {
   @override
   Widget build(context) {
     return ElevatedButton(
-      onPressed: () => onPressed("hi"),
+      onPressed: () => onPressed("timer"),
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(
           vertical: 10,
@@ -17,7 +17,7 @@ class NormalButton extends StatelessWidget {
         backgroundColor: const Color.fromRGBO(85, 95, 116, 1),
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40),
+          borderRadius: BorderRadius.circular(15),
         ),
       ),
       child: Text(
