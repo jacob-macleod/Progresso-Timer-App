@@ -7,11 +7,6 @@ class TimeSelector extends StatelessWidget {
   const TimeSelector(this.switchScreen, {super.key});
   final Function(String screen) switchScreen;
 
-  void onClick(String text) {
-    // Print the input to the console
-    print(text);
-  }
-
   @override
   Widget build(context) {
     return Background(
@@ -19,7 +14,8 @@ class TimeSelector extends StatelessWidget {
         child: Column(
           children: [
             const NumberPickerWidget(),
-            NormalButton("Start Timer", switchScreen),
+            // Parameters are text, onclick function, string to pass to the switchScreen function
+            NormalButton("Start Timer", switchScreen, "timer"),
           ],
         ),
       ),

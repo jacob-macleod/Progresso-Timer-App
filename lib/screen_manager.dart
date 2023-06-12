@@ -14,8 +14,8 @@ class ScreenManager extends StatefulWidget {
 class _ScreenManagerState extends State<ScreenManager> {
   Widget? currentScreenWidget;
 
+  // Switch the screen displayed
   void switchScreen(String screen) {
-    print("Switching to $screen");
     setState(() {
       if (screen == "timeSelector") {
         currentScreen = "timeSelector";
@@ -23,22 +23,20 @@ class _ScreenManagerState extends State<ScreenManager> {
       } else if (screen == "timer") {
         currentScreen = "timer";
         currentScreenWidget = const Timer();
-        print("switched");
       }
     });
   }
 
   String currentScreen = "timeSelector";
-  // Run the code when the class runs initially
-
-  //Widget currentScreenWidget = TimeSelector(switchScreen);
 
   @override
+  // When the widget is built, set the value of the currentScreenWidget variable
   void initState() {
     super.initState();
     currentScreenWidget = TimeSelector(switchScreen);
   }
 
+  // Return the currentScreenWidget to display
   Widget build(context) {
     return MaterialApp(
         home: Scaffold(
