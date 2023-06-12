@@ -47,10 +47,15 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
       Center(
         child: Column(children: [
           const SizedBox(height: 150),
-          CircularProgressIndicator(
-            value: controller.value,
-            semanticsLabel: 'Circular progress indicator',
+          Transform.scale(
+            scale: 6.0,
+            child: CircularProgressIndicator(
+              color: const Color.fromRGBO(85, 95, 116, 1),
+              value: controller.value,
+              semanticsLabel: 'Circular progress indicator',
+            ),
           ),
+          const SizedBox(height: 150),
           Switch(
             value: determinate,
             onChanged: (bool value) {
