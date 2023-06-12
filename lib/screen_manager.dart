@@ -22,7 +22,7 @@ class _ScreenManagerState extends State<ScreenManager> {
         currentScreenWidget = TimeSelector(switchScreen);
       } else if (screen == "timer") {
         currentScreen = "timer";
-        currentScreenWidget = const Timer();
+        currentScreenWidget = Timer(switchScreen);
       }
     });
   }
