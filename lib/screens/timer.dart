@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:progresso/componments/background.dart';
 
 class Timer extends StatelessWidget {
   const Timer({super.key});
 
   @override
   Widget build(context) {
-    return const MaterialApp(
-        home: Scaffold(
-      body: Center(
-        child: Text("Timer"),
+    return const Background(
+      Center(
+        child: Text("hello"),
       ),
-    ));
+    );
   }
 }
