@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progresso/componments/background.dart';
 import 'package:progresso/componments/normal_button.dart';
+import 'package:progresso/componments/ghost_button.dart';
 
 class Timer extends StatefulWidget {
   const Timer(this.switchScreen, {super.key});
@@ -13,6 +14,21 @@ class Timer extends StatefulWidget {
 class _TimerState extends State<Timer> with TickerProviderStateMixin {
   late AnimationController controller;
   bool determinate = false;
+  bool paused = false;
+
+  void pauseTimer(double value) {
+    setState(() {
+      if (paused == false) {
+        controller.stop();
+        paused = true;
+      } else {
+        controller
+          ..forward(from: value)
+          ..repeat();
+        paused = false;
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -50,27 +66,13 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
           Transform.scale(
             scale: 6.0,
             child: CircularProgressIndicator(
-              color: const Color.fromRGBO(85, 95, 116, 1),
+              color: const Color.fromRGBO(85, 95, 116, 1), // Try a gradient
               value: controller.value,
               semanticsLabel: 'Circular progress indicator',
             ),
           ),
           const SizedBox(height: 150),
-          Switch(
-            value: determinate,
-            onChanged: (bool value) {
-              setState(() {
-                determinate = value;
-                if (determinate) {
-                  controller.stop();
-                } else {
-                  controller
-                    ..forward(from: 0.5)
-                    ..repeat();
-                }
-              });
-            },
-          ),
+          GhostButton("Pause", pauseTimer, controller.value),
           NormalButton("Finish", widget.switchScreen, "timeSelector"),
         ]),
       ),
