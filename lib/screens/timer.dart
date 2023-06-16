@@ -50,6 +50,7 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
       vsync: this,
       duration: Duration(seconds: timeInSeconds),
     )..addListener(() {
+        print("animate");
         setState(() {});
       });
 
@@ -64,6 +65,15 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  final TextStyle _selectedTimePickerStyle = const TextStyle(
+    color: Color.fromRGBO(237, 231, 222, 1),
+    fontWeight: FontWeight.w300,
+    fontSize: 64,
+  );
+
+  final double _height = 60;
+  final double _width = 90;
+
   /*
   Notes for myself:
     * Progress indicator has a duration of seconds
@@ -76,14 +86,29 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
       Center(
         child: Column(children: [
           const SizedBox(height: 150),
-          Transform.scale(
-            scale: 6.0,
-            child: CircularProgressIndicator(
-              color: const Color.fromRGBO(85, 95, 116, 1), // Try a gradient
-              backgroundColor: Color.fromRGBO(30, 31, 41, 1),
-              value: controller.value,
-              semanticsLabel: 'Circular progress indicator',
-            ),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Transform.scale(
+                scale: 7.0,
+                child: CircularProgressIndicator(
+                  color: const Color.fromRGBO(85, 95, 116, 1),
+                  backgroundColor: Color.fromRGBO(30, 31, 41, 1),
+                  value: controller.value,
+                  semanticsLabel: 'Circular progress indicator',
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("1", style: _selectedTimePickerStyle),
+                  Text(":", style: _selectedTimePickerStyle),
+                  Text("30", style: _selectedTimePickerStyle),
+                  Text(":", style: _selectedTimePickerStyle),
+                  Text("54", style: _selectedTimePickerStyle),
+                ],
+              ),
+            ],
           ),
           const SizedBox(height: 150),
           Row(
