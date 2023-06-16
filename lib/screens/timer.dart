@@ -12,10 +12,15 @@ class Timer extends StatefulWidget {
 }
 
 class _TimerState extends State<Timer> with TickerProviderStateMixin {
+  /*
+    NOTE: A lot of the timer code is from the flutter docs, I'm not sure what it does exactly!
+   */
+  // Set some variables
   late AnimationController controller;
   bool determinate = false;
   bool paused = false;
 
+  // When the pause button is pressed
   void pauseTimer(double value) {
     setState(() {
       if (paused == false) {
@@ -51,8 +56,7 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
   }
 
   /*
-  Notes:
-    * I need to add comments
+  Notes for myself:
     * Progress indicator has a duration of seconds
     * Progress indicator has a bool value between 0 and 1, corrosponding to the percentage finished it is
   */

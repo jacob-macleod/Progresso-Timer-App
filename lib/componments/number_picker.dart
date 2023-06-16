@@ -3,20 +3,17 @@ import 'package:numberpicker/numberpicker.dart';
 import 'package:progresso/componments/normal_button.dart';
 
 class NumberPickerWidget extends StatefulWidget {
-  NumberPickerWidget(this.switchScreen, {Key? key}) : super(key: key);
+  const NumberPickerWidget(this.switchScreen, {Key? key}) : super(key: key);
   final Function(String screen, List<int>?) switchScreen;
 
   @override
   State<NumberPickerWidget> createState() {
     return _NumberPickerWidgetState();
   }
-
-  List<int> getTimeSelectorValues() {
-    return _NumberPickerWidgetState().getTimeSelectorValues();
-  }
 }
 
 class _NumberPickerWidgetState extends State<NumberPickerWidget> {
+  // Have to be late, or onChanged: (value) => setState(() => minute = value) will throw an error
   late int hour = 7;
   late int minute = 30;
   late int second = 15;
@@ -29,26 +26,28 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
     second = 15;
   }
 
-  List<int> getTimeSelectorValues() {
-    return [hour, minute, second];
-  }
-
+  // Define a few text styles
   final TextStyle _timePickerStyle = const TextStyle(
     color: Color.fromRGBO(99, 99, 99, 1),
     fontSize: 40,
   );
+
   final TextStyle _selectedTimePickerStyle = const TextStyle(
     color: Color.fromRGBO(237, 231, 222, 1),
     fontWeight: FontWeight.w800,
     fontSize: 64,
   );
+
   final double _height = 60;
   final double _width = 90;
 
+  // Actuall display the page content
   @override
   Widget build(BuildContext context) {
+    // Display a collumn
     return Column(
       children: <Widget>[
+        // Display a sized box
         const SizedBox(height: 150),
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -91,6 +90,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
         Text('Current value: $hour'),
         Text('Current value: $minute'),
         Text('Current value: $second'),
+        // Display a button
         NormalButton("Start Timer", widget.switchScreen, "timer",
             time: [hour, minute, second]),
       ],
