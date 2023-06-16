@@ -109,8 +109,8 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
               Transform.scale(
                 scale: 7.0,
                 child: CircularProgressIndicator(
-                  color: const Color.fromRGBO(85, 95, 116, 1),
-                  backgroundColor: Color.fromRGBO(30, 31, 41, 1),
+                  color: Color.fromRGBO(30, 31, 41, 1),
+                  backgroundColor: const Color.fromRGBO(85, 95, 116, 1),
                   value: controller.value,
                   semanticsLabel: 'Circular progress indicator',
                 ),

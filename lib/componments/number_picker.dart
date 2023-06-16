@@ -21,9 +21,9 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
   @override
   void initState() {
     super.initState();
-    hour = 7;
+    hour = 0;
     minute = 30;
-    second = 15;
+    second = 00;
   }
 
   // Define a few text styles
