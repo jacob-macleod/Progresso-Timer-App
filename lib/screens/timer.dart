@@ -52,7 +52,9 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
     )..addListener(() {
         setState(() {});
       });
+
     controller.repeat(reverse: false);
+
     super.initState();
   }
 
@@ -78,6 +80,7 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
             scale: 6.0,
             child: CircularProgressIndicator(
               color: const Color.fromRGBO(85, 95, 116, 1), // Try a gradient
+              backgroundColor: Color.fromARGB(255, 171, 176, 188),
               value: controller.value,
               semanticsLabel: 'Circular progress indicator',
             ),
