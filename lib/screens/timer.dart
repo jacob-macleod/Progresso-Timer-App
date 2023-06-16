@@ -80,7 +80,7 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
             scale: 6.0,
             child: CircularProgressIndicator(
               color: const Color.fromRGBO(85, 95, 116, 1), // Try a gradient
-              backgroundColor: Color.fromARGB(255, 171, 176, 188),
+              backgroundColor: Color.fromRGBO(30, 31, 41, 1),
               value: controller.value,
               semanticsLabel: 'Circular progress indicator',
             ),
