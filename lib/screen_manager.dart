@@ -15,7 +15,9 @@ class _ScreenManagerState extends State<ScreenManager> {
   Widget? currentScreenWidget;
 
   // Switch the screen displayed
-  void switchScreen(String screen) {
+  void switchScreen(String screen, int? time) {
+    print(time);
+    print("next");
     setState(() {
       if (screen == "timeSelector") {
         currentScreen = "timeSelector";

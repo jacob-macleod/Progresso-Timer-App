@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class NormalButton extends StatelessWidget {
-  const NormalButton(this.text, this.onPressed, this.screen, {super.key});
+  const NormalButton(this.text, this.onPressed, this.screen,
+      {super.key, this.time});
   final String text;
-  final Function onPressed;
+  final Function(String, int?) onPressed;
   final String screen;
+  final int? time;
 
   @override
   Widget build(context) {
     return ElevatedButton(
-      onPressed: () => onPressed(screen),
+      onPressed: () => onPressed(screen, time),
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(
           vertical: 10,

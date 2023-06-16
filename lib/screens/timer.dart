@@ -5,7 +5,7 @@ import 'package:progresso/componments/ghost_button.dart';
 
 class Timer extends StatefulWidget {
   const Timer(this.switchScreen, {super.key});
-  final Function switchScreen;
+  final Function(String, int?) switchScreen;
 
   @override
   _TimerState createState() => _TimerState();
