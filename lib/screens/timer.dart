@@ -4,8 +4,9 @@ import 'package:progresso/componments/normal_button.dart';
 import 'package:progresso/componments/ghost_button.dart';
 
 class Timer extends StatefulWidget {
-  const Timer(this.switchScreen, {super.key});
+  const Timer(this.switchScreen, this.time, {super.key});
   final Function(String, List<int>?) switchScreen;
+  final List<int>? time;
 
   @override
   _TimerState createState() => _TimerState();
@@ -19,6 +20,7 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
   late AnimationController controller;
   bool determinate = false;
   bool paused = false;
+  int timeInSeconds = 0;
 
   // When the pause button is pressed
   void pauseTimer(double value) {
@@ -37,11 +39,16 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    // Conver the time to seconds
+    int timeInSeconds =
+        widget.time![0] * 3600 + widget.time![1] * 60 + widget.time![2];
+
+    // Create a controller
     controller = AnimationController(
       /// [AnimationController]s can be created with `vsync: this` because of
       /// [TickerProviderStateMixin].
       vsync: this,
-      duration: const Duration(seconds: 10),
+      duration: Duration(seconds: timeInSeconds),
     )..addListener(() {
         setState(() {});
       });

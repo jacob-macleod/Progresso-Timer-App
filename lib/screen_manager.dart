@@ -16,15 +16,13 @@ class _ScreenManagerState extends State<ScreenManager> {
 
   // Switch the screen displayed
   void switchScreen(String screen, List<int>? time) {
-    print(time);
-    print("next");
     setState(() {
       if (screen == "timeSelector") {
         currentScreen = "timeSelector";
         currentScreenWidget = TimeSelector(switchScreen);
       } else if (screen == "timer") {
         currentScreen = "timer";
-        currentScreenWidget = Timer(switchScreen);
+        currentScreenWidget = Timer(switchScreen, time);
       }
     });
   }
