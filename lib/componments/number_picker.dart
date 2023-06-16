@@ -1,35 +1,38 @@
-/*
-NumberPicker(
-          value: 6,
-          minValue: 0,
-          maxValue: 100,
-          step: 10,
-          haptics: true,
-          onChanged: ,
-        ),*/
-
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:progresso/componments/normal_button.dart';
 
 class NumberPickerWidget extends StatefulWidget {
-  NumberPickerWidget(this.switchScreen, {super.key});
-  final Function switchScreen;
-
-  int _hour = 7;
-  int _minute = 30;
-  int _second = 15;
-
-  List<int> getTimeSelectorValues() {
-    return [_hour, _minute, _second];
-  }
+  NumberPickerWidget(this.switchScreen, {Key? key}) : super(key: key);
+  final Function(String screen, List<int>?) switchScreen;
 
   @override
   State<NumberPickerWidget> createState() {
     return _NumberPickerWidgetState();
   }
+
+  List<int> getTimeSelectorValues() {
+    return _NumberPickerWidgetState().getTimeSelectorValues();
+  }
 }
 
 class _NumberPickerWidgetState extends State<NumberPickerWidget> {
+  late int hour = 7;
+  late int minute = 30;
+  late int second = 15;
+
+  @override
+  void initState() {
+    super.initState();
+    hour = 7;
+    minute = 30;
+    second = 15;
+  }
+
+  List<int> getTimeSelectorValues() {
+    return [hour, minute, second];
+  }
+
   final TextStyle _timePickerStyle = const TextStyle(
     color: Color.fromRGBO(99, 99, 99, 1),
     fontSize: 40,
@@ -43,7 +46,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
   final double _width = 90;
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         const SizedBox(height: 150),
@@ -51,7 +54,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             NumberPicker(
-              value: widget._hour,
+              value: hour,
               minValue: 0,
               maxValue: 23,
               haptics: true,
@@ -59,10 +62,10 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
               selectedTextStyle: _selectedTimePickerStyle,
               itemHeight: _height,
               itemWidth: _width,
-              onChanged: (value) => setState(() => widget._hour = value),
+              onChanged: (value) => setState(() => hour = value),
             ),
             NumberPicker(
-              value: widget._minute,
+              value: minute,
               minValue: 0,
               maxValue: 59,
               haptics: true,
@@ -70,10 +73,10 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
               selectedTextStyle: _selectedTimePickerStyle,
               itemHeight: _height,
               itemWidth: _width,
-              onChanged: (value) => setState(() => widget._minute = value),
+              onChanged: (value) => setState(() => minute = value),
             ),
             NumberPicker(
-              value: widget._second,
+              value: second,
               minValue: 0,
               maxValue: 59,
               haptics: true,
@@ -81,13 +84,15 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
               selectedTextStyle: _selectedTimePickerStyle,
               itemHeight: _height,
               itemWidth: _width,
-              onChanged: (value) => setState(() => widget._second = value),
+              onChanged: (value) => setState(() => second = value),
             ),
           ],
         ),
-        Text('Current value: $widget._hour'),
-        Text('Current value: $widget._minute'),
-        Text('Current value: $widget._second'),
+        Text('Current value: $hour'),
+        Text('Current value: $minute'),
+        Text('Current value: $second'),
+        NormalButton("Start Timer", widget.switchScreen, "timer",
+            time: [hour, minute, second]),
       ],
     );
   }

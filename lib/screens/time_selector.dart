@@ -5,19 +5,22 @@ import 'package:progresso/componments/normal_button.dart';
 
 class TimeSelector extends StatelessWidget {
   const TimeSelector(this.switchScreen, {super.key});
-  final Function(String screen, int?) switchScreen;
+  final Function(String screen, List<int>?) switchScreen;
 
   @override
   Widget build(context) {
-    NumberPickerWidget myObject = NumberPickerWidget(switchScreen);
-    print(myObject.getTimeSelectorValues());
+    NumberPickerWidget numberPicker = NumberPickerWidget(switchScreen);
     return Background(
       Center(
         child: Column(
           children: [
-            NumberPickerWidget(switchScreen),
+            numberPicker,
             // Parameters are text, onclick function, string to pass to the switchScreen function
-            NormalButton("Start Timer", switchScreen, "timer", time: 7),
+            /*NormalButton("Start Timer", switchScreen, "timer", time: [
+              numberPicker.hour,
+              numberPicker.minute,
+              numberPicker.second
+            ]),*/
           ],
         ),
       ),
