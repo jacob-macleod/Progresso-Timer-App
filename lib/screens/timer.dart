@@ -50,8 +50,22 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
       vsync: this,
       duration: Duration(seconds: timeInSeconds),
     )..addListener(() {
-        print("animate");
-        setState(() {});
+        setState(() {
+          // Update the seconds countdown
+          hour =
+              ((timeInSeconds - (controller.value * timeInSeconds).toInt()) ~/
+                      3600)
+                  .toString();
+          minute =
+              (((timeInSeconds - (controller.value * timeInSeconds).toInt()) %
+                          3600) ~/
+                      60)
+                  .toString();
+          second =
+              ((timeInSeconds - (controller.value * timeInSeconds).toInt()) %
+                      60)
+                  .toString();
+        });
       });
 
     controller.repeat(reverse: false);
@@ -74,6 +88,9 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
   final double _height = 60;
   final double _width = 90;
 
+  String hour = "1";
+  String minute = "30";
+  String second = "54";
   /*
   Notes for myself:
     * Progress indicator has a duration of seconds
@@ -101,11 +118,11 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("1", style: _selectedTimePickerStyle),
+                  Text(hour, style: _selectedTimePickerStyle),
                   Text(":", style: _selectedTimePickerStyle),
-                  Text("30", style: _selectedTimePickerStyle),
+                  Text(minute, style: _selectedTimePickerStyle),
                   Text(":", style: _selectedTimePickerStyle),
-                  Text("54", style: _selectedTimePickerStyle),
+                  Text(second, style: _selectedTimePickerStyle),
                 ],
               ),
             ],
