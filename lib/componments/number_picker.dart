@@ -87,9 +87,6 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
             ),
           ],
         ),
-        Text('Current value: $hour'),
-        Text('Current value: $minute'),
-        Text('Current value: $second'),
         // Display a button
         NormalButton("Start Timer", widget.switchScreen, "timer",
             time: [hour, minute, second]),
