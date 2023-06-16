@@ -82,10 +82,10 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
   final TextStyle _selectedTimePickerStyle = const TextStyle(
     color: Color.fromRGBO(237, 231, 222, 1),
     fontWeight: FontWeight.w300,
-    fontSize: 64,
+    fontSize: 50,
   );
 
-  final double _height = 60;
+  final double _height = 40;
   final double _width = 90;
 
   String hour = "1";
@@ -100,43 +100,50 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Background(
-      Center(
-        child: Column(children: [
-          const SizedBox(height: 150),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Transform.scale(
-                scale: 7.0,
-                child: CircularProgressIndicator(
-                  color: Color.fromRGBO(30, 31, 41, 1),
-                  backgroundColor: const Color.fromRGBO(85, 95, 116, 1),
-                  value: controller.value,
-                  semanticsLabel: 'Circular progress indicator',
-                ),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Column(children: [
+              const SizedBox(height: 150),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Transform.scale(
+                    scale: 7.0,
+                    child: CircularProgressIndicator(
+                      color: Color.fromRGBO(30, 31, 41, 1),
+                      backgroundColor: const Color.fromRGBO(85, 95, 116, 1),
+                      value: controller.value,
+                      semanticsLabel: 'Circular progress indicator',
+                      strokeWidth: 2,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(hour, style: _selectedTimePickerStyle),
+                      Text(":", style: _selectedTimePickerStyle),
+                      Text(minute, style: _selectedTimePickerStyle),
+                      Text(":", style: _selectedTimePickerStyle),
+                      Text(second, style: _selectedTimePickerStyle),
+                    ],
+                  ),
+                ],
               ),
+              const SizedBox(height: 150),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(hour, style: _selectedTimePickerStyle),
-                  Text(":", style: _selectedTimePickerStyle),
-                  Text(minute, style: _selectedTimePickerStyle),
-                  Text(":", style: _selectedTimePickerStyle),
-                  Text(second, style: _selectedTimePickerStyle),
+                  NormalButton("Finish", widget.switchScreen, "timeSelector"),
+                  const SizedBox(width: 25),
+                  GhostButton("Pause", pauseTimer, controller.value),
                 ],
               ),
-            ],
+            ]),
           ),
-          const SizedBox(height: 150),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              NormalButton("Finish", widget.switchScreen, "timeSelector"),
-              const SizedBox(width: 25),
-              GhostButton("Pause", pauseTimer, controller.value),
-            ],
-          ),
-        ]),
+          const SizedBox(height: 40),
+        ],
       ),
     );
   }

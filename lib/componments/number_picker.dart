@@ -38,7 +38,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
     fontSize: 64,
   );
 
-  final double _height = 60;
+  final double _height = 70;
   final double _width = 90;
 
   // Actuall display the page content
@@ -48,7 +48,6 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
     return Column(
       children: <Widget>[
         // Display a sized box
-        const SizedBox(height: 150),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -62,6 +61,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
               itemHeight: _height,
               itemWidth: _width,
               onChanged: (value) => setState(() => hour = value),
+              infiniteLoop: true,
             ),
             NumberPicker(
               value: minute,
@@ -73,6 +73,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
               itemHeight: _height,
               itemWidth: _width,
               onChanged: (value) => setState(() => minute = value),
+              infiniteLoop: true,
             ),
             NumberPicker(
               value: second,
@@ -84,9 +85,11 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
               itemHeight: _height,
               itemWidth: _width,
               onChanged: (value) => setState(() => second = value),
+              infiniteLoop: true,
             ),
           ],
         ),
+        const SizedBox(height: 30),
         // Display a button
         NormalButton("Start Timer", widget.switchScreen, "timer",
             time: [hour, minute, second]),

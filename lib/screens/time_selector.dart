@@ -10,7 +10,7 @@ class TimeSelector extends StatelessWidget {
   Widget build(context) {
     return Background(
       Center(
-        child: Column(children: [
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           // NumberPickerWidget also displays a button - I couln't work out how to display it here but still read the value of number picker widget!
           // TODO: Fix this somehow!
           NumberPickerWidget(switchScreen),
