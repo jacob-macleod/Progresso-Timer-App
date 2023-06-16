@@ -9,11 +9,13 @@ class TimeSelector extends StatelessWidget {
 
   @override
   Widget build(context) {
+    NumberPickerWidget myObject = NumberPickerWidget(switchScreen);
+    print(myObject.getTimeSelectorValues());
     return Background(
       Center(
         child: Column(
           children: [
-            const NumberPickerWidget(),
+            NumberPickerWidget(switchScreen),
             // Parameters are text, onclick function, string to pass to the switchScreen function
             NormalButton("Start Timer", switchScreen, "timer"),
           ],

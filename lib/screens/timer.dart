@@ -72,8 +72,14 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
             ),
           ),
           const SizedBox(height: 150),
-          GhostButton("Pause", pauseTimer, controller.value),
-          NormalButton("Finish", widget.switchScreen, "timeSelector"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              NormalButton("Finish", widget.switchScreen, "timeSelector"),
+              const SizedBox(width: 25),
+              GhostButton("Pause", pauseTimer, controller.value),
+            ],
+          ),
         ]),
       ),
     );
