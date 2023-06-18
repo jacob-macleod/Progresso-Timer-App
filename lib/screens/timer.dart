@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:progresso/componments/background.dart';
 import 'package:progresso/componments/normal_button.dart';
 import 'package:progresso/componments/ghost_button.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class Timer extends StatefulWidget {
   const Timer(this.switchScreen, this.time, {super.key});
@@ -37,6 +38,16 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
     });
   }
 
+  bool soundPlaying = false;
+  final player = AudioPlayer();
+
+  void playSound() async {
+    if (soundPlaying == false) {
+      player.play(AssetSource("timerFinished.wav"));
+      soundPlaying = true;
+    }
+  }
+
   @override
   void initState() {
     // Conver the time to seconds
@@ -66,6 +77,12 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
                       60)
                   .toString();
         });
+
+        if (controller.value > 0.99) {
+          //soundPlaying = false;
+          playSound();
+          print("playing");
+        }
       });
 
     controller.repeat(reverse: false);
