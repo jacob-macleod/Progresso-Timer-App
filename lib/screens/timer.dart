@@ -42,7 +42,7 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
 
   void playSound() async {
     if (player.state != "playing") {
-      player.play(AssetSource("timerFinished.wav"));
+      player.play(AssetSource("timeFinishedShort.wav"));
     }
   }
 
