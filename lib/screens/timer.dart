@@ -38,13 +38,11 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
     });
   }
 
-  bool soundPlaying = false;
   final player = AudioPlayer();
 
   void playSound() async {
-    if (soundPlaying == false) {
+    if (player.state != "playing") {
       player.play(AssetSource("timerFinished.wav"));
-      soundPlaying = true;
     }
   }
 
