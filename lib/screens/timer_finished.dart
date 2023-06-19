@@ -29,17 +29,7 @@ class _TimerFinishedState extends State<TimerFinished> {
 
   void playSound() async {
     player.play(AssetSource("timeFinishedShort.wav"));
-    // Wait a few seconds before playing the sound again
-    await Future.delayed(const Duration(seconds: 3));
   }
-
-  /*@override
-  void dispose() {
-    play = "false";
-    player.stop(); // Stop the audio player
-    player.dispose(); // Dispose of the audio player
-    super.dispose();
-  }*/
 
   void loadMainScreen(String screen, List<int>? time) {
     player.stop();
@@ -50,7 +40,7 @@ class _TimerFinishedState extends State<TimerFinished> {
   Widget build(context) {
     playSound();
     return Background(Center(
-      child: Column(children: [
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         const SizedBox(height: 150),
         Stack(
           alignment: Alignment.center,

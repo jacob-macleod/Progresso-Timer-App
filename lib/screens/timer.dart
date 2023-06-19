@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:progresso/componments/background.dart';
 import 'package:progresso/componments/normal_button.dart';
 import 'package:progresso/componments/ghost_button.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 class Timer extends StatefulWidget {
   const Timer(this.switchScreen, this.time, {super.key});
@@ -13,10 +12,12 @@ class Timer extends StatefulWidget {
   _TimerState createState() => _TimerState();
 }
 
-class _TimerState extends State<Timer> with TickerProviderStateMixin {
+class _TimerState extends State<Timer>
+    with TickerProviderStateMixin, WidgetsBindingObserver {
   /*
     NOTE: A lot of the timer code is from the flutter docs, I'm not sure what it does exactly!
    */
+
   // Set some variables
   late AnimationController controller;
   bool determinate = false;
@@ -40,6 +41,8 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
+
     // Conver the time to seconds
     int timeInSeconds =
         widget.time![0] * 3600 + widget.time![1] * 60 + widget.time![2];
@@ -80,7 +83,21 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    if (state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.detached) return;
+
+    final isBackground = state == AppLifecycleState.paused;
+    if (isBackground) {
+      print("paused");
+    }
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     controller.dispose();
     super.dispose();
   }
@@ -97,6 +114,7 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
   String hour = "1";
   String minute = "30";
   String second = "54";
+
   /*
   Notes for myself:
     * Progress indicator has a duration of seconds
