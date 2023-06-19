@@ -92,6 +92,8 @@ class _TimerState extends State<Timer>
     final isBackground = state == AppLifecycleState.paused;
     if (isBackground) {
       print("paused");
+    } else {
+      print("start");
     }
   }
 
