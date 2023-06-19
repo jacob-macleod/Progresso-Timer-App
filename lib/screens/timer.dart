@@ -38,14 +38,6 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
     });
   }
 
-  final player = AudioPlayer();
-
-  void playSound() async {
-    if (player.state != "playing") {
-      player.play(AssetSource("timeFinishedShort.wav"));
-    }
-  }
-
   @override
   void initState() {
     // Conver the time to seconds
@@ -76,10 +68,9 @@ class _TimerState extends State<Timer> with TickerProviderStateMixin {
                   .toString();
         });
 
-        if (controller.value > 0.99) {
-          //soundPlaying = false;
-          playSound();
-          print("playing");
+        // If the timer is pretty much finished
+        if (controller.value > (timeInSeconds - 1) / timeInSeconds) {
+          widget.switchScreen("timerFinished", null);
         }
       });
 

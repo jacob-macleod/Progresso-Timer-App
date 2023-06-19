@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progresso/screens/time_selector.dart';
 import 'package:progresso/screens/timer.dart';
+import 'package:progresso/screens/timer_finished.dart';
 
 class ScreenManager extends StatefulWidget {
   const ScreenManager({super.key});
@@ -23,6 +24,9 @@ class _ScreenManagerState extends State<ScreenManager> {
       } else if (screen == "timer") {
         currentScreen = "timer";
         currentScreenWidget = Timer(switchScreen, time);
+      } else if (screen == "timerFinished") {
+        currentScreen = "timerFinished";
+        currentScreenWidget = TimerFinished(switchScreen);
       }
     });
   }

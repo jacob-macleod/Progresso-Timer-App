@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progresso/componments/background.dart';
 import 'package:progresso/componments/number_picker.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 class TimeSelector extends StatelessWidget {
   const TimeSelector(this.switchScreen, {super.key});

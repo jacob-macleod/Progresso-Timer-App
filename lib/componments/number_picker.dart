@@ -22,7 +22,7 @@ class _NumberPickerWidgetState extends State<NumberPickerWidget> {
   void initState() {
     super.initState();
     hour = 0;
-    minute = 30;
+    minute = 0;
     second = 00;
   }
 
