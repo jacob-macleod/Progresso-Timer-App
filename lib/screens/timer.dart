@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:progresso/componments/background.dart';
 import 'package:progresso/componments/normal_button.dart';
 import 'package:progresso/componments/ghost_button.dart';
-import 'package:progresso/notifications.dart';
 
 class Timer extends StatefulWidget {
   const Timer(this.switchScreen, this.time, {super.key});
@@ -19,9 +17,6 @@ class _TimerState extends State<Timer>
   /*
     NOTE: A lot of the timer code is from the flutter docs, I'm not sure what it does exactly!
    */
-
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
 
   // Set some variables
   late AnimationController controller;
@@ -44,42 +39,10 @@ class _TimerState extends State<Timer>
     });
   }
 
-  Future<void> initializeNotifications() async {
-    AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings("icon");
-
-    final InitializationSettings initializationSettings =
-        InitializationSettings(android: initializationSettingsAndroid);
-
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  }
-
-  Future<void> showNotification() async {
-    print("showing notification");
-    const AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
-      'channel_id',
-      'channel_name',
-      importance: Importance.max,
-      priority: Priority.high,
-    );
-
-    const NotificationDetails platformChannelSpecifics =
-        NotificationDetails(android: androidPlatformChannelSpecifics);
-
-    await flutterLocalNotificationsPlugin.show(
-      0, // Notification ID
-      'Notification Title',
-      'Notification Body',
-      platformChannelSpecifics,
-    );
-  }
-
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     //Noti.initialize(flutterLocalNotificationsPlugin);
-    initializeNotifications();
 
     // Conver the time to seconds
     int timeInSeconds =
@@ -207,9 +170,7 @@ class _TimerState extends State<Timer>
                   const SizedBox(width: 25),
                   GhostButton("Pause", pauseTimer, controller.value),
                   ElevatedButton(
-                      onPressed: () {
-                        showNotification();
-                      },
+                      onPressed: () {},
                       child: Text("Send Notification",
                           style: TextStyle(fontSize: 20))),
                 ],
