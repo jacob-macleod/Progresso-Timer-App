@@ -1,16 +1,11 @@
 # progresso
 
-A new Flutter project.
+A timer made with Flutter
 
-## Getting Started
+## Overview
+This application is still in development. At the moment, the following features have been developed:
+* The ability to set a time
+* The ability to start, stop, and pause a timer
+* Once timers are finished, the user is taken to a screen and sound is played
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Several features are planned to be implemented, like notifications and timer presets
