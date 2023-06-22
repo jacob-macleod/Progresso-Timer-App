@@ -9,3 +9,6 @@ This application is still in development. At the moment, the following features 
 * Once timers are finished, the user is taken to a screen and sound is played
 
 Several features are planned to be implemented, like notifications and timer presets
+
+## Errors encountered
+When I added firebase support, I had an error while compiling the project. I fixed this after changing `classpath com.google.gms:google-services:4.3.10` to `classpath com.google.gms:google-services:4.3.14` in `build.gradle`
