@@ -1,3 +1,5 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:progresso/componments/background.dart';
 import 'package:progresso/componments/normal_button.dart';
@@ -37,6 +39,13 @@ class _TimerState extends State<Timer>
         paused = false;
       }
     });
+  }
+
+  void setupPushNotifications() async {
+    final fcm = FirebaseMessaging.instance;
+    await fcm.requestPermission();
+    final token = await fcm.getToken();
+    print(token);
   }
 
   @override
@@ -81,6 +90,7 @@ class _TimerState extends State<Timer>
     controller.repeat(reverse: false);
 
     super.initState();
+    setupPushNotifications();
   }
 
   @override
