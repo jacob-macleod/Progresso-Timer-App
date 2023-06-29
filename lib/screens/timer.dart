@@ -41,13 +41,6 @@ class _TimerState extends State<Timer>
     });
   }
 
-  void setupPushNotifications() async {
-    final fcm = FirebaseMessaging.instance;
-    await fcm.requestPermission();
-    final token = await fcm.getToken();
-    print(token);
-  }
-
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
@@ -90,7 +83,6 @@ class _TimerState extends State<Timer>
     controller.repeat(reverse: false);
 
     super.initState();
-    setupPushNotifications();
   }
 
   @override
@@ -179,10 +171,6 @@ class _TimerState extends State<Timer>
                   NormalButton("Finish", widget.switchScreen, "timeSelector"),
                   const SizedBox(width: 25),
                   GhostButton("Pause", pauseTimer, controller.value),
-                  ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Send Notification",
-                          style: TextStyle(fontSize: 20))),
                 ],
               ),
             ]),
